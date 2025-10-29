@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aba Made | Checkout</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-color: #088178;
+      --accent-color: #ff7b00;
+      --text-light: #fff;
+      --text-dark: #222;
+      --bg-light: #f8f8f8;
+      --input-border: #ccc;
+    }
+
+    body {
+      font-family: 'League Spartan', sans-serif;
+      background: var(--bg-light);
+      margin: 0;
+      color: var(--text-dark);
+    }
+
+    /* ===== HEADER ===== */
+    #header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background: var(--primary-color);
+    }
+
+    #header .logo {
+      height: 60px;
+    }
+
+    #navbar {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      margin: 0;
+    }
+
+    #navbar li a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    #navbar li a:hover {
+      color: var(--accent-color);
+    }
+
+    /* ===== PAGE HEADER ===== */
+    #page-header {
+      background: var(--primary-color);
+      color: var(--text-light);
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    #page-header h2 {
+      font-size: 40px;
+      margin-bottom: 10px;
+      font-weight: 800;
+    }
+
+    #page-header p {
+      font-size: 16px;
+      color: #e0f7f6;
+    }
+
+    /* ===== CHECKOUT CONTAINER ===== */
+    .checkout-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    /* ===== LEFT: CART ITEMS ===== */
+    .checkout-items {
+      flex: 1 1 60%;
+      background: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      overflow-x: auto;
+    }
+
+    #checkout-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    #checkout-table th, #checkout-table td {
+      padding: 12px;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    #checkout-table th {
+      background: var(--primary-color);
+      color: var(--text-light);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    #checkout-table td {
+      border-bottom: 1px solid #eee;
+      vertical-align: middle;
+    }
+
+    #checkout-table img {
+      width: 65px;
+      height: 65px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    /* ===== RIGHT: SUMMARY & CUSTOMER ===== */
+    .checkout-summary {
+      flex: 1 1 35%;
+      background: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .checkout-summary h3 {
+      margin-bottom: 15px;
+      font-size: 22px;
+      color: var(--primary-color);
+    }
+
+    .checkout-summary p {
+      margin: 8px 0;
+      font-size: 16px;
+    }
+
+    .checkout-summary input,
+    .checkout-summary textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid var(--input-border);
+      font-size: 15px;
+    }
+
+    .checkout-summary textarea {
+      resize: vertical;
+      min-height: 70px;
+    }
+
+    /* ===== DEBIT CARD SECTION ===== */
+    .debit-card-section {
+      margin: 15px 0;
+    }
+
+    .debit-card-section h4 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: var(--accent-color);
+    }
+
+    .debit-card-section .card-input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      border: 1px solid var(--input-border);
+      font-size: 15px;
+    }
+
+    .debit-card-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .debit-card-row .card-input {
+      flex: 1;
+    }
+
+    /* ===== COUPON SECTION ===== */
+    .coupon {
+      display: flex;
+      gap: 10px;
+      margin: 15px 0;
+    }
+
+    .coupon input {
+      flex: 1;
+    }
+
+    .coupon button {
+      padding: 12px 20px;
+      border-radius: 8px;
+      border: none;
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      color: var(--text-light);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .coupon button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    /* ===== PLACE ORDER BUTTON ===== */
+    #place-order {
+      width: 100%;
+      padding: 15px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 50px;
+      font-size: 17px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      color: var(--text-light);
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    #place-order:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+
+    /* ===== BACK & CONTINUE BUTTONS ===== */
+    .checkout-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .checkout-buttons a {
+      padding: 12px 25px;
+      border-radius: 50px;
+      font-weight: 600;
+      color: var(--text-light);
+      text-decoration: none;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      transition: 0.3s;
+      text-align: center;
+    }
+
+    .checkout-buttons a:hover {
+      background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+      transform: translateY(-2px);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .checkout-container {
+        flex-direction: column;
+      }
+      .checkout-items, .checkout-summary {
+        flex: 1 1 100%;
+      }
+      .debit-card-row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header id="header">
+    <a href="index.html"><img src="IMAGES/LOGO/ABAMADE LOGO.png" class="logo" alt="Aba Made Logo"></a>
+    <ul id="navbar">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i> <span id="cart-count">0</span></a></li>
+    </ul>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section id="page-header">
+    <h2>Checkout</h2>
+    <p>Review your items and complete your purchase</p>
+  </section>
+
+  <!-- CHECKOUT SECTION -->
+  <section class="checkout-container">
+
+    <!-- LEFT: CART ITEMS -->
+    <div class="checkout-items">
+      <table id="checkout-table">
+        <thead>
+          <tr>
+            <th>Remove</th>
+            <th>Product</th>
+            <th>Name</th>
+            <th>Size</th>
+            <th>Price</th>
+            <th>Qty</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody id="checkout-items">
+          <!-- JS will populate cart items -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- RIGHT: SUMMARY & CUSTOMER -->
+    <div class="checkout-summary">
+      <h3>Order Summary</h3>
+      <p>Subtotal: <span id="checkout-subtotal">₦0</span></p>
+      <p>Total: <span id="checkout-total">₦0</span></p>
+
+      <div class="coupon">
+        <input type="text" id="coupon-code" placeholder="Enter coupon code">
+        <button id="apply-coupon">Apply</button>
+      </div>
+      <p id="coupon-message"></p>
+
+      <h3>Customer Details</h3>
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="email" id="email" placeholder="Email Address" required>
+      <input type="tel" id="phone" placeholder="Phone Number" required>
+      <textarea id="address" placeholder="Delivery Address" required></textarea>
+
+      <div class="debit-card-section">
+        <h4>Debit Card Details</h4>
+        <input type="text" id="card-number" class="card-input" placeholder="Card Number" maxlength="19">
+        <div class="debit-card-row">
+          <input type="text" id="card-expiry" class="card-input" placeholder="MM/YY" maxlength="5">
+          <input type="text" id="card-cvv" class="card-input" placeholder="CVV" maxlength="4">
+        </div>
+      </div>
+
+      <button id="place-order">💳 Place Order</button>
+
+      <div class="checkout-buttons">
+        <a href="cart.html"><i class="fa fa-arrow-left"></i> Back to Cart</a>
+        <a href="shop.html"><i class="fa fa-shopping-bag"></i> Continue Shopping</a>
+      </div>
+    </div>
+
+  </section>
+
+  <script src="checkout.js"></script>
+</body>
+</html>

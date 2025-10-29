@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Aba Made | Shopping Cart</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <section id="header" class="cart-header">
+    <a href="#"><img src="IMAGES/LOGO/ABAMADE LOGO.png" class="logo" alt=""></a>
+    <div>
+      <ul id="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li id="lg-bag">
+          <a class="active" href="cart.html">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-count">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PAGE HEADER -->
+  <section id="page-header" class="about-header">
+    <h2>#YourCart</h2>
+    <p>Manage your Aba Made items</p>
+  </section>
+
+  <!-- CART TABLE -->
+  <section id="cart" class="section-p1">
+    <table width="100%">
+      <thead>
+        <tr>
+          <td>Remove</td>
+          <td>Image</td>
+          <td>Product</td>
+          <td>Size</td>
+          <td>Price</td>
+          <td>Quantity</td>
+          <td>Subtotal</td>
+        </tr>
+      </thead>
+      <tbody id="cart-items"></tbody>
+    </table>
+  </section>
+
+  <!-- CART TOTAL -->
+  <section id="cart-add" class="section-p1">
+    <div id="subtotal">
+      <h3>Cart Totals</h3>
+      <table>
+        <tr>
+          <td>Cart Subtotal</td>
+          <td id="cart-subtotal">₦0</td>
+        </tr>
+        <tr>
+          <td>Shipping</td>
+          <td>Free</td>
+        </tr>
+        <tr>
+          <td><strong>Total</strong></td>
+          <td><strong id="cart-total">₦0</strong></td>
+        </tr>
+      </table>
+
+      <div class="cart-buttons">
+        <a href="shop.html" class="normal back-btn">Back to Shop</a>
+        
+
+      </div>
+    </div>
+  </section>
+
+  <div class="cart-actions">
+    <a href="cart.html" class="cart-btn back-btn">
+      <i class="fa fa-arrow-up"></i> Back to Cart
+    </a>
+
+    <a href="checkout.html" class="cart-btn proceed-btn">
+      <i class="fa fa-credit-card"></i> Proceed to Checkout
+    </a>
+  </div>
+
+
+
+  <!-- NEWSLETTER -->
+  <section id="newsletter" class="section-p1 section-m1">
+    <div class="newstext">
+      <h4>Sign Up For Newsletters</h4>
+      <p>Get email updates about our latest shop and <span>special offers.</span></p>
+    </div>
+    <div class="form">
+      <input type="text" placeholder="Your email address">
+      <button class="normal">Sign Up</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="section-p1">
+    <div class="col">
+      <img class="logo" src="IMAGES/LOGO/ABAMADE LOGO.png" alt="">
+      <h4>Contact</h4>
+      <p><strong>Address:</strong> #19 New Aba Vision Avenue, Aba, Abia State</p>
+      <p><strong>Phone:</strong> +234 8132 025732</p>
+      <p><strong>Hours:</strong> 10:00 – 18:00, Mon – Sat</p>
+    </div>
+
+    <div class="col">
+      <h4>About</h4>
+      <a href="#">About Us</a>
+      <a href="#">Delivery Information</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms & Conditions</a>
+      <a href="#">Contact Us</a>
+    </div>
+
+    <div class="col">
+      <h4>My Account</h4>
+      <a href="#">Sign In</a>
+      <a href="#">View Cart</a>
+      <a href="#">My Wishlist</a>
+      <a href="#">Track My Order</a>
+      <a href="#">Help</a>
+    </div>
+
+    <div class="col install">
+      <h4>Install App</h4>
+      <p>From App Store or Google Play</p>
+      <div class="row">
+        <img src="IMAGES/PAY/app.png" alt="">
+        <img src="IMAGES/PAY/play.png" alt="">
+      </div>
+      <p>Secured Payment Gateways</p>
+      <img src="IMAGES/PAY/pay.png" alt="">
+    </div>
+
+    <div class="copyright">
+      <p>© 2025 Aba Made Fashion – All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <!-- CART SCRIPT -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cartItemsEl = document.getElementById('cart-items');
+      const cartCountEl = document.getElementById('cart-count');
+      const cartSubtotalEl = document.getElementById('cart-subtotal');
+      const cartTotalEl = document.getElementById('cart-total');
+
+      function formatPrice(num) {
+        return '₦' + num.toLocaleString();
+      }
+
+      function updateCartDisplay() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cartItemsEl.innerHTML = '';
+
+        let subtotal = 0;
+        cart.forEach((item, index) => {
+          const itemSubtotal = item.price * item.quantity;
+          subtotal += itemSubtotal;
+
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td><button class="remove-item" data-index="${index}"><i class="fa-solid fa-xmark"></i></button></td>
+            <td><img src="${item.image}" width="50" alt=""></td>
+            <td>${item.name}</td>
+            <td>${item.size}</td>
+            <td>${formatPrice(item.price)}</td>
+            <td>
+              <button class="dec-qty" data-index="${index}">-</button>
+              <input type="number" value="${item.quantity}" min="1" data-index="${index}" class="qty-input">
+              <button class="inc-qty" data-index="${index}">+</button>
+            </td>
+            <td>${formatPrice(itemSubtotal)}</td>
+          `;
+          cartItemsEl.appendChild(row);
+        });
+
+        cartSubtotalEl.textContent = formatPrice(subtotal);
+        cartTotalEl.textContent = formatPrice(subtotal);
+
+        // Update cart count
+        const totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartCountEl.textContent = totalQty;
+      }
+
+      function saveCart(cart) {
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartDisplay();
+      }
+
+      cartItemsEl.addEventListener('click', e => {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const index = e.target.closest('button')?.dataset.index;
+
+        if (e.target.closest('.remove-item')) {
+          cart.splice(index, 1);
+          saveCart(cart);
+        }
+
+        if (e.target.closest('.inc-qty')) {
+          cart[index].quantity += 1;
+          saveCart(cart);
+        }
+
+        if (e.target.closest('.dec-qty')) {
+          if (cart[index].quantity > 1) cart[index].quantity -= 1;
+          saveCart(cart);
+        }
+      });
+
+      cartItemsEl.addEventListener('input', e => {
+        if (e.target.classList.contains('qty-input')) {
+          let cart = JSON.parse(localStorage.getItem('cart')) || [];
+          const index = e.target.dataset.index;
+          const val = parseInt(e.target.value) || 1;
+          cart[index].quantity = val < 1 ? 1 : val;
+          saveCart(cart);
+        }
+      });
+
+      // Initial display
+      updateCartDisplay();
+    });
+  </script>
+</body>
+</html>

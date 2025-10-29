@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Aba Made | Shop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <section id="header">
+    <a href="#"><img src="IMAGES/LOGO/ABAMADE LOGO.png" class="logo" alt=""></a>
+    <div>
+      <ul id="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a class="active" href="shop.html">Shop</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i><span id="cart-count">0</span></a></li>
+        <a href="#" id="close"><i class="fa-solid fa-circle-xmark"></i></a>
+      </ul>
+    </div>
+    <div id="mobile">
+      <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+      <i id="bar" class="fa-solid fa-outdent"></i>
+    </div>
+  </section>
+
+  <!-- PAGE HEADER -->
+  <section id="page-header">
+    <h2>#Stay Aba Made</h2>
+    <p>Save more with coupons & up to 70% off!</p>
+  </section>
+
+  <!-- PRODUCTS GRID -->
+  <section id="product1" class="section-p1">
+    <h2>Our Aba Made Collections</h2>
+    <p>Choose your style and step out in confidence</p>
+    <div class="pro-container">
+
+      <!-- Simple Collections -->
+      <div class="pro" onclick="viewProduct(
+          'IMAGES/PRODUCTS/F1.jpg',
+          'Simple Collections',
+          '₦50,000',
+          'Step into the Simple Collections sneaker—soft, breathable, and casual yet unforgettable. Perfect for city strolls or weekend hangouts.'
+        )">
+        <img src="IMAGES/PRODUCTS/F1.jpg" alt="">
+        <div class="des"><span>AbaMade</span><h5>Simple Collections</h5><h4>₦50,000</h4></div>
+      </div>
+
+      <!-- Royal Kicks -->
+      <div class="pro" onclick="viewProduct(
+          'IMAGES/PRODUCTS/F2.jpg',
+          'Royal Kicks',
+          '₦45,000',
+          'Rule every step with the Royal Kicks. Premium leather, bold stitching, and Aba craftsmanship make these sneakers perfect for standing out.'
+        )">
+        <img src="IMAGES/PRODUCTS/F2.jpg" alt="">
+        <div class="des"><span>AbaMade</span><h5>Royal Kicks</h5><h4>₦45,000</h4></div>
+      </div>
+
+      <!-- Classic Walker -->
+      <div class="pro" onclick="viewProduct(
+          'IMAGES/PRODUCTS/F3.jpg',
+          'Classic Walker',
+          '₦38,000',
+          'Walk with timeless elegance in the Classic Walker. Durable, stylish, and perfect for everyday outings or casual gatherings.'
+        )">
+        <img src="IMAGES/PRODUCTS/F3.jpg" alt="">
+        <div class="des"><span>AbaMade</span><h5>Classic Walker</h5><h4>₦38,000</h4></div>
+      </div>
+
+      <!-- Aba Slay Loafers -->
+      <div class="pro" onclick="viewProduct(
+          'IMAGES/PRODUCTS/F4.jpg',
+          'Aba Slay Loafers',
+          '₦42,000',
+          'Turn heads with Aba Slay Loafers. Smooth leather, elegant stitching, and plush comfort for smart casual events.'
+        )">
+        <img src="IMAGES/PRODUCTS/F4.jpg" alt="">
+        <div class="des"><span>AbaMade</span><h5>Aba Slay Loafers</h5><h4>₦42,000</h4></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section id="newsletter" class="section-p1 section-m1">
+    <div class="newstext">
+      <h4>Sign Up For Newsletters</h4>
+      <p>Get email updates about our latest shop and <span>special offers.</span></p>
+    </div>
+    <div class="form">
+      <input type="text" placeholder="Your email address">
+      <button class="normal">Sign Up</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="section-p1">
+    <div class="col">
+      <img class="logo" src="IMAGES/LOGO/ABAMADE LOGO.png" alt="">
+      <h4>Contact</h4>
+      <p><strong>Address: </strong>#19 New Aba Vision Avenue, Aba, Abia State, Nigeria</p>
+      <p><strong>Phone: </strong>+234 8132 0257 32</p>
+      <p><strong>Hours: </strong>10:00 - 18:00, Mon - Sat</p>
+      <div class="follow">
+        <h4>Follow Us</h4>
+        <div class="icon">
+          <i class="fa-brands fa-facebook-f"></i>
+          <i class="fa-brands fa-twitter"></i>
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-pinterest-p"></i>
+          <i class="fa-brands fa-youtube"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h4>About</h4>
+      <a href="#">About Us</a>
+      <a href="#">Delivery Information</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms & Conditions</a>
+      <a href="#">Contact Us</a>
+    </div>
+
+    <div class="col">
+      <h4>My Account</h4>
+      <a href="#">Sign In</a>
+      <a href="#">View Cart</a>
+      <a href="#">My Wishlist</a>
+      <a href="#">Track My Order</a>
+      <a href="#">Help</a>
+    </div>
+
+    <div class="col install">
+      <h4>Install App</h4>
+      <p>From App Store or Google Play</p>
+      <div class="row">
+        <img src="IMAGES/PAY/app.png" alt="">
+        <img src="IMAGES/PAY/play.png" alt="">
+      </div>
+      <p>Secured Payment Gateways</p>
+      <img src="IMAGES/PAY/pay.png" alt="">
+    </div>
+
+    <div class="copyright">
+      <p>© 2025, NIIT HTML CSS JS Ecommerce Project</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    function viewProduct(image, name, price, desc) {
+      localStorage.setItem('productImage', image);
+      localStorage.setItem('productName', name);
+      localStorage.setItem('productPrice', price);
+      localStorage.setItem('productDesc', desc);
+      window.location.href = 'sproduct.html';
+    }
+  </script>
+
+</body>
+</html>

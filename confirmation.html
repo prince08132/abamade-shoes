@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Aba Made | Order Confirmation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  
+
+
+  <style>
+    :root {
+      --primary-color: #088178;
+      --accent-color: #ff7b00;
+      --text-light: #fff;
+      --card-bg: #fff;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    #order-confirmation {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 85vh;
+      padding: 20px;
+    }
+
+    .confirmation-card {
+      background: var(--card-bg);
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      max-width: 800px;
+      width: 100%;
+      padding: 30px 40px;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .confirmation-card h2 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 5px;
+      color: var(--primary-color);
+    }
+
+    .confirmation-card p.subtitle {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #666;
+      font-size: 16px;
+    }
+
+    .order-details, .order-summary {
+      margin-top: 25px;
+    }
+
+    .order-details h4, .order-summary h4 {
+      border-bottom: 2px solid #eee;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      color: #333;
+      font-size: 18px;
+    }
+
+    .order-details p, .order-summary p {
+      font-size: 15px;
+      margin: 5px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      border-bottom: 1px solid #eee;
+      padding: 10px 8px;
+      text-align: left;
+      font-size: 15px;
+    }
+
+    th {
+      background: var(--primary-color);
+      color: var(--text-light);
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .total {
+      text-align: right;
+      font-size: 18px;
+      font-weight: 700;
+      margin-top: 15px;
+      color: #000;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
+
+    .shop-now-btn {
+      padding: 12px 25px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-light);
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      transition: 0.3s;
+    }
+
+    .shop-now-btn:hover {
+      background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+      transform: translateY(-2px);
+    }
+
+    .print-btn {
+      background: #27ae60;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    /* ====== PRINT STYLING ====== */
+    @media print {
+      body { background: #fff; }
+      #header, .buttons, footer { display: none; }
+
+      .confirmation-card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        width: 100%;
+        padding: 20px;
+      }
+
+      th, td {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <section id="header" style="text-align:center; padding:15px;">
+    <a href="index.html"><img src="IMAGES/LOGO/ABAMADE LOGO.png" class="logo" alt="Aba Made Logo" width="120"></a>
+  </section>
+
+  <!-- PAGE HEADER -->
+  <section id="page-header">
+    <h2>Order Confirmation</h2>
+    <p class="subtitle">Thank you for shopping with Aba Made!</p>
+  </section>
+
+  <!-- CONFIRMATION SECTION -->
+  <section id="order-confirmation">
+    <div class="confirmation-card">
+      <h2>🎉 Order Placed Successfully!</h2>
+      <p class="subtitle">Your order number is <strong id="order-id"></strong></p>
+
+      <div class="order-details">
+        <h4>Customer Information</h4>
+        <p><strong>Name:</strong> <span id="confirm-name"></span></p>
+        <p><strong>Email:</strong> <span id="confirm-email"></span></p>
+        <p><strong>Phone:</strong> <span id="confirm-phone"></span></p>
+        <p><strong>Address:</strong> <span id="confirm-address"></span></p>
+      </div>
+
+      <div class="order-summary">
+        <h4>Order Summary</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Qty</th>
+              <th>Price</th>
+              <th>Subtotal</th>
+            </tr>
+          </thead>
+          <tbody id="confirm-items"></tbody>
+        </table>
+        <p class="total">Total: <span id="confirm-total"></span></p>
+      </div>
+
+      <div class="buttons">
+        <button class="shop-now-btn print-btn" onclick="window.print()">🖨️ Print Receipt</button>
+        <a href="shop.html" class="shop-now-btn">⬅️ Back to Shop</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Aba Made Fashion – All Rights Reserved</p>
+  </footer>
+
+  <script>
+    // ===== Load Order Data =====
+    const orderData = JSON.parse(localStorage.getItem("orderData"));
+
+    if (!orderData) {
+      document.getElementById("order-confirmation").innerHTML = `
+        <div class="confirmation-card">
+          <h2>⚠️ No Order Found</h2>
+          <p class="subtitle">You haven't placed an order yet.</p>
+          <div class="buttons">
+            <a href="shop.html" class="shop-now-btn">⬅️ Back to Shop</a>
+          </div>
+        </div>
+      `;
+    } else {
+      document.getElementById("order-id").textContent = orderData.id;
+      document.getElementById("confirm-name").textContent = orderData.name;
+      document.getElementById("confirm-email").textContent = orderData.email;
+      document.getElementById("confirm-phone").textContent = orderData.phone;
+      document.getElementById("confirm-address").textContent = orderData.address;
+
+      const itemsContainer = document.getElementById("confirm-items");
+      itemsContainer.innerHTML = "";
+      orderData.items.forEach(item => {
+        const subtotal = item.price * item.quantity;
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${item.name}</td>
+          <td>${item.quantity}</td>
+          <td>₦${item.price.toLocaleString()}</td>
+          <td>₦${subtotal.toLocaleString()}</td>
+        `;
+        itemsContainer.appendChild(tr);
+      });
+
+      document.getElementById("confirm-total").textContent = orderData.total;
+
+      // Optional: clear order after viewing
+      // localStorage.removeItem("orderData");
+    }
+  </script>
+</body>
+</html>
